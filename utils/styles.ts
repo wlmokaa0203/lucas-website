@@ -1,4 +1,11 @@
+const color = {
+  white: '#fff',
+}
+
 const styles = {
+  page: {
+    minHeight: '80vh',
+  },
   header: {
     backgroundColor: 'primary.main',
     mb: '1.45rem', // margin bottom
@@ -15,23 +22,32 @@ const styles = {
     px: '1.0875rem', // left/right padding
   },
   appBar: {
-    backgroundColor: 'transparent',
+    background: 'linear-gradient(#FFFFFF, #D9D9D9)',
     transition: '1s',
     boxShadow: 'unset',
-    '&:hover': {
-      backgroundColor: 'primary.light',
-      transition: '0.5s',
-    },
   },
   appToolBar: {
     justifyContent: 'center',
     fontSize: '20px',
   },
   navLink: {
-    color: 'black',
     width: '100px',
+    borderRadius: 20,
     mx: 1,
   },
+  logo: {
+    position: 'absolute',
+    left: 20,
+    color: 'primary.main',
+    '& :hover': {
+      cursor: 'pointer',
+    },
+  },
+  resume: {
+    backgroundColor: color.white,
+    margin: 1,
+  },
+
   //   customComponent: {
   //     // to be used with none MUI components
   //     backgroundColor: theme.palette.primary.main,

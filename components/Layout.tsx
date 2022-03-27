@@ -1,24 +1,19 @@
 import React from 'react'
 import Head from 'next/head'
-
-import {
-  AppBar,
-  Container,
-  CssBaseline,
-  Toolbar,
-  GlobalStyles,
-  Button,
-} from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
+import { CssBaseline, GlobalStyles, Container } from '@mui/material'
+
 import theme from '../utils/theme'
-import { styles, globalStyles } from '../utils/styles'
-interface ILayout {
+import { globalStyles, styles } from '../utils/styles'
+import NavBar from './NavBar'
+
+interface PageProps {
   title?: string
   description?: string
   children: React.ReactNode
 }
 
-export default function Layout({ title, description, children }: ILayout) {
+export default function Page({ title, description, children }: PageProps) {
   return (
     <div>
       <Head>
@@ -27,17 +22,11 @@ export default function Layout({ title, description, children }: ILayout) {
         </title>
         {description && <meta name="description" content={description}></meta>}
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <CssBaseline />
-        {<GlobalStyles styles={globalStyles} />}
-        <AppBar sx={styles.appBar} position="static">
-          <Toolbar sx={styles.appToolBar}>
-            <Button sx={styles.navLink}>Home</Button>
-            <Button sx={styles.navLink}>BLOG</Button>
-            <Button sx={styles.navLink}>ABOUT</Button>
-          </Toolbar>
-        </AppBar>
-        <Container>{children}</Container>
+        <NavBar />
+        <Container sx={styles.page}>{children}</Container>
+        <GlobalStyles styles={globalStyles} />
       </ThemeProvider>
     </div>
   )
