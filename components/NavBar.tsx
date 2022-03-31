@@ -1,13 +1,18 @@
 import React from 'react'
-import { AppBar, Toolbar, Button } from '@mui/material'
+import { AppBar, Toolbar, Box, Link } from '@mui/material'
 import { useRouter } from 'next/router'
-import { Box } from '@mui/system'
+import NextLink from 'next/link'
+
 import { styles } from '../utils/styles'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 export default function NavBar() {
   const navLinks = [
-    { name: 'resume', slug: '/resume' },
-    { name: 'blog', slug: '/blog' },
+    { name: 'About', slug: '/about' },
+    { name: 'My Skills', slug: '/my-skills' },
+    { name: 'Showcase', slug: '/showcase' },
+    { name: 'Contact', slug: '/contact' },
+    { name: 'Blog', slug: '/blog' },
   ]
   const router = useRouter()
   const handleClickLink = (slug: string) => {
@@ -26,29 +31,37 @@ export default function NavBar() {
             name={name}
             slug={slug}
             isActive={router.pathname == slug}
-            onClick={() => handleClickLink(slug)}
           />
         ))}
+        <Box sx={styles.contactLinks}>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/lucas-mok-550111128/"
+            rel="noreferrer"
+          >
+            <LinkedInIcon />
+          </a>
+        </Box>
       </Toolbar>
     </AppBar>
   )
 }
 
-function NavLink({ name, isActive, onClick }: NavLinkProps) {
-  return (
-    <Button
-      sx={styles.navLink}
-      variant={isActive ? 'outlined' : 'text'}
-      onClick={onClick}
-    >
-      {name}
-    </Button>
-  )
-}
-
-interface NavLinkProps {
+type NavLinkProps = {
   name: string
   slug: string
   isActive: boolean
-  onClick: () => void
+}
+
+function NavLink({ name, slug, isActive }: NavLinkProps) {
+  return (
+    <NextLink href={slug} passHref>
+      <Link
+        underline="none"
+        sx={[styles.navLink, isActive && { fontWeight: 'bold' }]}
+      >
+        {name}
+      </Link>
+    </NextLink>
+  )
 }

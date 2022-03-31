@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
-import PageHead from '../components/Layout'
+import Layout from '../components/Layout'
 
 const BlogScreen: NextPage = () => {
-  return <PageHead>Hello</PageHead>
+  return <Layout>Blog</Layout>
 }
 
 export default BlogScreen

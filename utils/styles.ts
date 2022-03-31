@@ -31,9 +31,16 @@ const styles = {
     fontSize: '20px',
   },
   navLink: {
-    width: '100px',
+    height: '24px',
+    width: '80px',
+    fontSize: 14,
+    color: 'primary.main',
     borderRadius: 20,
     mx: 1,
+    textAlign: 'center',
+    '&:hover': {
+      textShadow: '2px 1px #000',
+    },
   },
   logo: {
     position: 'absolute',
@@ -43,18 +50,19 @@ const styles = {
       cursor: 'pointer',
     },
   },
-  resume: {
-    backgroundColor: color.white,
-    margin: 1,
+  contactLinks: {
+    position: 'absolute',
+    right: 20,
+    '& > a': {
+      color: 'primary.main',
+      '& :hover': {
+        opacity: 0.8,
+      },
+    },
   },
-
-  //   customComponent: {
-  //     // to be used with none MUI components
-  //     backgroundColor: theme.palette.primary.main,
-  //   },
 }
 const globalStyles = {
   a: { textDecoration: 'none' },
 }
 
-export { styles, globalStyles }
+export { styles, globalStyles, color }
