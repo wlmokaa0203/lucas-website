@@ -1,19 +1,17 @@
 import React from 'react'
 import Head from 'next/head'
-import { ThemeProvider } from '@mui/material/styles'
-import { CssBaseline, GlobalStyles, Container } from '@mui/material'
-
-import theme from '../utils/theme'
-import { globalStyles, styles } from '../utils/styles'
+import { Container } from '@mui/material'
+import { styles } from '../utils/styles'
 import NavBar from './NavBar'
 
-interface PageProps {
+interface Props {
   title?: string
   description?: string
   children: React.ReactNode
+  hideNavBar?: boolean
 }
 
-export default function Page({ title, description, children }: PageProps) {
+export default function Layout({ title, description, children }: Props) {
   return (
     <div>
       <Head>
@@ -22,12 +20,8 @@ export default function Page({ title, description, children }: PageProps) {
         </title>
         {description && <meta name="description" content={description}></meta>}
       </Head>
-      <ThemeProvider theme={theme.light}>
-        <CssBaseline />
-        <NavBar />
-        <Container sx={styles.page}>{children}</Container>
-        <GlobalStyles styles={globalStyles} />
-      </ThemeProvider>
+      <NavBar />
+      <Container sx={styles.page}>{children}</Container>
     </div>
   )
 }
