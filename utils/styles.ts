@@ -2,9 +2,24 @@ const color = {
   white: '#fff',
 }
 
+const breakpoints = {
+  mediaQuery: {
+    xs: '(max-width: 600px)',
+    s: '(min-width: 600px)',
+    m: '(min-width: 768px)',
+    l: '(min-width: 992px)',
+    xl: '(min-width: 1200px)',
+  },
+}
+
 const styles = {
   page: {
+    paddingTop: 2,
     minHeight: '80vh',
+  },
+  pageTitle: {
+    fontWeight: 'bold',
+    color: 'primary.main',
   },
   header: {
     backgroundColor: 'primary.main',
@@ -24,7 +39,7 @@ const styles = {
   appBar: {
     background: 'linear-gradient(#FFFFFF, #D9D9D9)',
     transition: '1s',
-    boxShadow: 'unset',
+    // boxShadow: 'unset',
   },
   appToolBar: {
     justifyContent: 'center',
@@ -39,14 +54,12 @@ const styles = {
     mx: 1,
     textAlign: 'center',
     '&:hover': {
-      textShadow: '2px 1px #000',
+      color: 'primary.light',
     },
   },
   logo: {
-    position: 'absolute',
-    left: 20,
     color: 'primary.main',
-    '& :hover': {
+    '&:hover': {
       cursor: 'pointer',
     },
   },
@@ -65,4 +78,4 @@ const globalStyles = {
   a: { textDecoration: 'none' },
 }
 
-export { styles, globalStyles, color }
+export { styles, globalStyles, color, breakpoints }
