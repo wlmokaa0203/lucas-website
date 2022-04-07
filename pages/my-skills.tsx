@@ -41,25 +41,50 @@ const MySkillsScreen: NextPage = () => {
     },
   ]
   const backendSkills = [
-    { name: 'Node.js (JavaScriptS/Typescript), ExpressJs' },
+    {
+      name: 'Node.js (JavaScriptS/Typescript), ExpressJs',
+      icons: ['/images/icons/nodejs.svg', '/images/icons/expressjs.svg'],
+    },
     { name: 'Restful API' },
-    { name: 'Knex' },
-    { name: 'PostgreSQL, MongoDB, RealmDB' },
+    { name: 'Knex', icons: ['/images/icons/knexjs.svg'] },
+    {
+      name: 'PostgreSQL, MongoDB, RealmDB',
+      icons: [
+        '/images/icons/psql.svg',
+        '/images/icons/mongodb.svg',
+        '/images/icons/realmdb.svg',
+      ],
+    },
   ]
   const devOpsSkills = [
-    { name: 'Docker' },
-    { name: 'AWS (EC2, S3, Cloudfront, Route 53...)' },
-    { name: 'Nginx' },
+    {
+      name: 'AWS (EC2, S3, Cloudfront, Route 53...)',
+      icons: [
+        '/images/icons/aws.svg',
+        '/images/icons/aws-ec2.svg',
+        '/images/icons/aws-s3.svg',
+        '/images/icons/aws-cloudfront.svg',
+        '/images/icons/aws-route-53.svg',
+      ],
+    },
+    {
+      name: 'Docker',
+      icons: ['/images/icons/docker.svg'],
+    },
+    { name: 'Nginx', icons: ['/images/icons/nginx.svg'] },
   ]
   const othersSkills = [
-    { name: 'Git' },
-    { name: 'Postman' },
-    { name: 'Draw.io: ERD drawwing/ Wireframing' },
+    { name: 'Git', icons: ['/images/icons/git.svg'] },
+    { name: 'Postman', icons: ['/images/icons/postman.svg'] },
+    {
+      name: 'Draw.io: ERD drawwing/ Wireframing',
+      icons: ['/images/icons/draw-io.svg'],
+    },
   ]
 
   return (
     <Layout>
-      <Stack spacing={2}>
+      <Stack sx={{ paddingBottom: 2 }} spacing={2}>
         <Card>
           <Typography component="div" variant="h6">
             PROGRAMMING LANGUAGES
@@ -121,6 +146,18 @@ const MySkillsScreen: NextPage = () => {
               </li>
             ))}
           </Ul>
+          <Container
+            sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
+          >
+            {backendSkills.map((skills) => {
+              const icons = skills.icons
+              return icons?.map((icon) => (
+                <Box key={icon} sx={{ margin: 1 }}>
+                  <Image alt={icon} src={icon} height={60} width={60} />
+                </Box>
+              ))
+            })}
+          </Container>
         </Card>
         <Card>
           <Typography component="div" variant="h5">
@@ -135,6 +172,18 @@ const MySkillsScreen: NextPage = () => {
               </li>
             ))}
           </Ul>
+          <Container
+            sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
+          >
+            {devOpsSkills.map((skills) => {
+              const icons = skills.icons
+              return icons?.map((icon) => (
+                <Box key={icon} sx={{ margin: 1 }}>
+                  <Image alt={icon} src={icon} height={60} width={60} />
+                </Box>
+              ))
+            })}
+          </Container>
         </Card>
         <Card>
           <Typography component="div" variant="h5">
@@ -149,6 +198,18 @@ const MySkillsScreen: NextPage = () => {
               </li>
             ))}
           </Ul>
+          <Container
+            sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}
+          >
+            {othersSkills.map((skills) => {
+              const icons = skills.icons
+              return icons?.map((icon) => (
+                <Box key={icon} sx={{ margin: 1 }}>
+                  <Image alt={icon} src={icon} height={60} width={60} />
+                </Box>
+              ))
+            })}
+          </Container>
         </Card>
       </Stack>
     </Layout>

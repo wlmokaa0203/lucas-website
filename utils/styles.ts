@@ -17,6 +17,12 @@ const styles = {
     paddingTop: 2,
     minHeight: '80vh',
   },
+  fullpage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+  },
   pageTitle: {
     fontWeight: 'bold',
     color: 'primary.main',

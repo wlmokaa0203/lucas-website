@@ -41,6 +41,7 @@ export default function NavBar() {
   }
 
   const matchM = useMediaQuery(breakpoints.mediaQuery.m)
+  const matchS = useMediaQuery(breakpoints.mediaQuery.s)
 
   return (
     <HideOnScroll>
@@ -97,7 +98,7 @@ export default function NavBar() {
               onClose={() => setShow(false)}
               onOpen={() => setShow(true)}
             >
-              <List sx={{ width: matchM ? 200 : '100vw' }}>
+              <List sx={{ width: matchS ? 200 : '100vw' }}>
                 <div
                   onClick={() => {
                     handleClickLink('/')
