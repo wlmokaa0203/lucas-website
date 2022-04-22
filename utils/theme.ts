@@ -1,12 +1,13 @@
 import { createTheme } from '@mui/material/styles'
+import { color } from './styles'
 
 const light = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#283340',
-      dark: '#283340',
-      light: '#7E8496',
+      main: color.dark,
+      dark: color.dark,
+      light: color.dark,
     },
     secondary: {
       main: '#733516',
@@ -34,6 +35,15 @@ const light = createTheme({
           body2: 'span',
         },
       },
+    },
+  },
+  shape: {
+    borderRadius: 12,
+  },
+  typography: {
+    body2: {
+      fontSize: 16,
+      color: 'primary.dark',
     },
   },
 })

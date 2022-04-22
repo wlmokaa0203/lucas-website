@@ -83,12 +83,16 @@ const MySkillsScreen: NextPage = () => {
   ]
 
   return (
-    <Layout>
+    <Layout title={'My Skills'}>
       <Stack sx={{ paddingBottom: 2 }} spacing={2}>
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: 'bold', textAlign: 'center' }}
+        >
+          My Programming Skills
+        </Typography>
         <Card>
-          <Typography component="div" variant="h6">
-            PROGRAMMING LANGUAGES
-          </Typography>
+          <Header>PROGRAMMING LANGUAGES</Header>
           <Ul>
             {langSkills.map((skill) => (
               <li key={skill.name}>{skill.name}</li>
@@ -108,9 +112,7 @@ const MySkillsScreen: NextPage = () => {
           </Container>
         </Card>
         <Card>
-          <Typography component="div" variant="h5">
-            FRONTEND
-          </Typography>
+          <Header>FRONTEND</Header>
           <Ul>
             {frontendSkills.map((skill) => (
               <li key={skill.name}>
@@ -134,15 +136,11 @@ const MySkillsScreen: NextPage = () => {
           </Container>
         </Card>
         <Card>
-          <Typography component="div" variant="h5">
-            BACKEND
-          </Typography>
+          <Header>BACKEND</Header>
           <Ul>
             {backendSkills.map((skill) => (
               <li key={skill.name}>
-                <Typography component="div" variant="body2">
-                  {skill.name}
-                </Typography>
+                <Typography variant="body2">{skill.name}</Typography>
               </li>
             ))}
           </Ul>
@@ -160,15 +158,11 @@ const MySkillsScreen: NextPage = () => {
           </Container>
         </Card>
         <Card>
-          <Typography component="div" variant="h5">
-            DevOps
-          </Typography>
+          <Header>DevOps</Header>
           <Ul>
             {devOpsSkills.map((skill) => (
               <li key={skill.name}>
-                <Typography component="div" variant="body2">
-                  {skill.name}
-                </Typography>
+                <Typography variant="body2">{skill.name}</Typography>
               </li>
             ))}
           </Ul>
@@ -186,15 +180,11 @@ const MySkillsScreen: NextPage = () => {
           </Container>
         </Card>
         <Card>
-          <Typography component="div" variant="h5">
-            OTHERS
-          </Typography>
+          <Header>OTHERS</Header>
           <Ul>
             {othersSkills.map((skill) => (
               <li key={skill.name}>
-                <Typography component="div" variant="body2">
-                  {skill.name}
-                </Typography>
+                <Typography variant="body2">{skill.name}</Typography>
               </li>
             ))}
           </Ul>
@@ -213,6 +203,14 @@ const MySkillsScreen: NextPage = () => {
         </Card>
       </Stack>
     </Layout>
+  )
+}
+
+const Header = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+      {children}
+    </Typography>
   )
 }
 

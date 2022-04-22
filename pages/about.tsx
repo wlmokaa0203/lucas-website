@@ -3,18 +3,12 @@ import type { NextPage } from 'next'
 import Layout from '../components/Layout'
 import Card from '../components/Card'
 import { styles } from '../utils/styles'
+import NextLink from 'next/link'
 
 const AboutScreen: NextPage = () => {
   return (
     <Layout title={'About me'}>
-      <Card
-        sx={{
-          height: 'calc(90vh - 64px)',
-          overflow: 'auto',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
+      <Card sx={styles.pageCard}>
         <Container sx={styles.fullpage}>
           <Typography sx={styles.pageTitle} component={'div'} variant={'h5'}>
             About Me
@@ -38,7 +32,9 @@ const AboutScreen: NextPage = () => {
             I Love football, guitar and photography.
             <br />
           </Typography>
-          <Button variant="contained">Contact me</Button>
+          <NextLink href={'/contact'} passHref>
+            <Button variant="contained">Contact me</Button>
+          </NextLink>
         </Container>
       </Card>
     </Layout>

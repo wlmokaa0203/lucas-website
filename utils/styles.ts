@@ -1,5 +1,18 @@
 const color = {
   white: '#fff',
+  dark: '#283340',
+  lightGray: '#7E8496',
+  navy: '#132257',
+  error: '#ff3333',
+}
+
+const font = {
+  size: {
+    header: 24,
+    body: 16,
+    small: 14,
+  },
+  borderRadius: 12,
 }
 
 const breakpoints = {
@@ -22,6 +35,12 @@ const styles = {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
+  },
+  pageCard: {
+    height: 'calc(90vh - 64px)',
+    overflow: 'auto',
+    display: 'flex',
+    alignItems: 'center',
   },
   pageTitle: {
     fontWeight: 'bold',
@@ -54,9 +73,9 @@ const styles = {
   navLink: {
     height: '24px',
     width: '80px',
-    fontSize: 14,
+    fontSize: font.size.small,
     color: 'primary.main',
-    borderRadius: 20,
+    borderRadius: font.borderRadius,
     mx: 1,
     textAlign: 'center',
     '&:hover': {
@@ -71,7 +90,7 @@ const styles = {
   },
   contactLinks: {
     position: 'absolute',
-    right: 20,
+    right: 25,
     '& > a': {
       color: 'primary.main',
       '& :hover': {
@@ -84,4 +103,4 @@ const globalStyles = {
   a: { textDecoration: 'none' },
 }
 
-export { styles, globalStyles, color, breakpoints }
+export { styles, globalStyles, color, breakpoints, font }
