@@ -1,8 +1,12 @@
-import type { NextPage } from 'next'
-import Layout from '../components/Layout'
+import { Container } from '@mui/material'
+import { NextPage } from 'next'
 
-const BlogScreen: NextPage = () => {
-  return <Layout>Blog</Layout>
+const Blog: NextPage = () => {
+  return (
+    <Container maxWidth="lg" sx={{ position: 'relative' }}>
+      <div>blog</div>
+    </Container>
+  )
 }
 
-export default BlogScreen
+export default Blog

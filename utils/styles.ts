@@ -1,8 +1,16 @@
 const color = {
   white: '#fff',
+  black: '#000000',
+  gold: '#B29155',
   dark: '#283340',
-  lightGray: '#7E8496',
-  navy: '#132257',
+  mossyGreen: '#A2A99D',
+  darkGreen: '#304145',
+  gray: '#BAC7CE',
+  steelBlue: '#303E4C',
+  softGray: '#F1F1F3',
+  darkBrown: '#807166',
+  brown: '#BAA495',
+  lightBrown: '#BAA495',
   error: '#ff3333',
 }
 
@@ -25,81 +33,15 @@ const breakpoints = {
   },
 }
 
-const styles = {
-  page: {
-    paddingTop: 2,
-    minHeight: '80vh',
-  },
-  fullpage: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  pageCard: {
-    height: 'calc(90vh - 64px)',
-    overflow: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  pageTitle: {
-    fontWeight: 'bold',
-    color: 'primary.main',
-  },
-  header: {
-    backgroundColor: 'primary.main',
-    mb: '1.45rem', // margin bottom
-  },
-  link: {
-    color: 'primary.contrastText',
-    textDecoration: 'none',
-  },
-  title: {
-    my: 0, // top/bottom margin
-    mx: 'auto', // left/right margin
-    maxWidth: 960,
-    py: '1.45rem', // top/bottom padding
-    px: '1.0875rem', // left/right padding
-  },
-  appBar: {
-    background: 'linear-gradient(#FFFFFF, #D9D9D9)',
-    transition: '1s',
-    // boxShadow: 'unset',
-  },
-  appToolBar: {
-    justifyContent: 'center',
-    fontSize: '20px',
-  },
-  navLink: {
-    height: '24px',
-    width: '80px',
-    fontSize: font.size.small,
-    color: 'primary.main',
-    borderRadius: font.borderRadius,
-    mx: 1,
-    textAlign: 'center',
-    '&:hover': {
-      color: 'primary.light',
-    },
-  },
-  logo: {
-    color: 'primary.main',
-    '&:hover': {
-      cursor: 'pointer',
-    },
-  },
-  contactLinks: {
-    position: 'absolute',
-    right: 25,
-    '& > a': {
-      color: 'primary.main',
-      '& :hover': {
-        opacity: 0.8,
-      },
-    },
-  },
-}
+const styles = {}
+
 const globalStyles = {
+  html: {
+    height: 0,
+  },
+  body: {
+    height: 0,
+  },
   a: { textDecoration: 'none' },
 }
 

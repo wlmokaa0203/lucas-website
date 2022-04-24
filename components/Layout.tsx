@@ -1,7 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import { Container } from '@mui/material'
-import { styles } from '../utils/styles'
 import { motion } from 'framer-motion'
 
 type Props = {
@@ -14,9 +12,9 @@ export default function Layout({ title, description, children }: Props) {
   return (
     <motion.div
       exit={{ opacity: 0 }}
-      initial={{ opacity: 0, x: '5%' }}
+      initial={{ opacity: 0, x: '-20%' }}
       animate={{ opacity: 1, x: '0%' }}
-      transition={{ duration: 0.1 }}
+      transition={{ duration: 0.2 }}
     >
       <Head>
         <title>
@@ -24,7 +22,7 @@ export default function Layout({ title, description, children }: Props) {
         </title>
         {description && <meta name="description" content={description}></meta>}
       </Head>
-      <Container sx={styles.page}>{children}</Container>
+      <div>{children}</div>
     </motion.div>
   )
 }

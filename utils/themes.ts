@@ -1,22 +1,24 @@
 import { createTheme } from '@mui/material/styles'
 import { color } from './styles'
 
-const light = createTheme({
+export const light = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: color.dark,
-      dark: color.dark,
-      light: color.dark,
+      main: color.darkGreen,
+      dark: color.darkGreen,
+      light: color.gray,
     },
     secondary: {
-      main: '#733516',
-      light: '#A88C82',
-      // dark: '#17252A',
-      // contrastText: '#000',
+      main: color.softGray,
+      dark: color.dark,
+      light: color.softGray,
     },
     background: {
-      default: '#D9D9D9',
+      default: color.softGray,
+    },
+    text: {
+      secondary: '#FFFFFF',
     },
   },
   components: {
@@ -38,7 +40,7 @@ const light = createTheme({
     },
   },
   shape: {
-    borderRadius: 12,
+    borderRadius: 4,
   },
   typography: {
     body2: {
@@ -48,10 +50,11 @@ const light = createTheme({
   },
 })
 
-const dark = createTheme({
+export const dark = createTheme({
   palette: {
     mode: 'dark',
+    background: {
+      default: color.dark,
+    },
   },
 })
-
-export default { light, dark }
