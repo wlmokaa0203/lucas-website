@@ -7,17 +7,33 @@ import {
   Container,
 } from '@mui/material'
 import type { NextPage } from 'next'
+import React from 'react'
 import { breakpoints, color } from '../utils/styles'
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
 import { motion } from 'framer-motion'
 import Layout from '../components/Layout'
 import Image from 'next/image'
 import ContactFormButton from '../components/ContactFormButton'
+import {
+  ExpandLess as ExpandLessIcon,
+  ExpandMore as ExpandMoreIcon,
+} from '@mui/icons-material'
 
 const Home: NextPage = () => {
   const matchM = useMediaQuery(breakpoints.mediaQuery.m)
+  const [hideAbout, setHideAbout] = React.useState(false)
+  const [hideSkills, setHideSkills] = React.useState(false)
+  const [hidePorfo, setHidePorfo] = React.useState(false)
 
-  const Title = ({ children }: { children: React.ReactNode }) => {
+  const Title = ({
+    children,
+    hide,
+    onClickIcon,
+  }: {
+    children: React.ReactNode
+    hide: boolean
+    onClickIcon: () => void
+  }) => {
     return (
       <Typography
         variant={matchM ? 'h2' : 'h4'}
@@ -29,9 +45,29 @@ const Home: NextPage = () => {
           color: 'text.secondary',
           fontWeight: '200',
           py: 1,
+          display: 'flex',
         }}
       >
         {children}
+        <Box
+          sx={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+          }}
+          px={2}
+        >
+          {hide ? (
+            <Box onClick={onClickIcon}>
+              <ExpandLessIcon />
+            </Box>
+          ) : (
+            <Box onClick={onClickIcon}>
+              <ExpandMoreIcon />
+            </Box>
+          )}
+        </Box>
       </Typography>
     )
   }
@@ -153,10 +189,7 @@ const Home: NextPage = () => {
             ))}
           </Grid>
         </Grid>
-        <Box
-          sx={{ height: 5, width: '80%', backgroundColor: 'primary.main' }}
-          my={2}
-        />
+        <Separator />
       </>
     )
   }
@@ -230,9 +263,43 @@ const Home: NextPage = () => {
             borderColor: color.black,
           }}
         >
-          <Title>About me</Title>
-          <Title>My Skills</Title>
-          <Box sx={{ flexGrow: 1 }}>
+          <Title
+            hide={hideAbout}
+            onClickIcon={() => setHideAbout((prev) => !prev)}
+          >
+            About
+          </Title>
+          <Box
+            sx={{
+              fontSize: matchM ? '18px' : '16px',
+              flexGrow: 1,
+              height: hideAbout ? 0 : 'auto',
+              overflow: 'hidden',
+            }}
+          >
+            <Typography component={'h5'} variant={'body2'} p={2}>
+              Welcome to My first personal website! I&apos;m building this web
+              as a showcase for my skill and knowledge as a Web developer. As a
+              developer, there are so many skills that need to pick up. <br />
+              Therefore, I will also build a blog to tidy up my learnings. And
+              of course, this website would be a great opportunity for practice.
+            </Typography>
+            <Separator />
+          </Box>
+
+          <Title
+            hide={hideSkills}
+            onClickIcon={() => setHideSkills((prev) => !prev)}
+          >
+            My Skills
+          </Title>
+          <Box
+            sx={{
+              flexGrow: 1,
+              height: hideSkills ? 0 : 'auto',
+              overflow: 'hidden',
+            }}
+          >
             {skills.map(({ title, items, icons }) => (
               <SkillContent
                 key={title}
@@ -242,22 +309,54 @@ const Home: NextPage = () => {
               />
             ))}
           </Box>
-
-          <Title>My Porfolio</Title>
+          <Title
+            hide={hidePorfo}
+            onClickIcon={() => setHidePorfo((prev) => !prev)}
+          >
+            My Porfolio
+          </Title>
+          <Box
+            sx={{
+              flexGrow: 1,
+              height: hidePorfo ? 0 : 'auto',
+              overflow: 'hidden',
+            }}
+          >
+            <Typography component={'h5'} variant={'body2'} p={2}>
+              Underdevelopment
+            </Typography>
+          </Box>
         </Box>
       </Container>
-      <Button
-        onClick={() => {
-          window.scrollTo(0, 0)
-        }}
-      >
-        back to top
-      </Button>
+      <Box>
+        <Button
+          onClick={() => {
+            window.scrollTo(0, 0)
+          }}
+        >
+          <motion.div
+            animate={{ y: '-50%' }}
+            transition={{ repeat: Infinity, duration: 0.5 }}
+          >
+            <KeyboardDoubleArrowDownIcon sx={{ transform: 'rotate(180deg)' }} />
+          </motion.div>
+          back to top
+        </Button>
+      </Box>
     </Layout>
   )
 }
 
 export default Home
+
+const Separator = () => {
+  return (
+    <Box
+      sx={{ height: 5, width: '80%', backgroundColor: 'primary.main' }}
+      my={2}
+    />
+  )
+}
 
 type Skill = {
   title: string
