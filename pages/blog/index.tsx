@@ -46,7 +46,6 @@ export async function getStaticProps() {
       path.join('posts', filename),
       'utf-8'
     )
-    console.log(markdownWithMeta)
     const { data: frontmatter } = matter(markdownWithMeta)
 
     return {

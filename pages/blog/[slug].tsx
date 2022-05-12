@@ -37,7 +37,7 @@ const BlogPostPage: NextPage<Props> = ({
             <Button>Go back</Button>
           </Link>
         </Box>
-        <Typography>{title}</Typography>
+        <Typography variant="h4">{title}</Typography>
         {content && (
           <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
         )}
