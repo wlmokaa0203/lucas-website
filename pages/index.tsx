@@ -21,9 +21,9 @@ import {
 
 const Home: NextPage = () => {
   const matchM = useMediaQuery(breakpoints.mediaQuery.m)
-  const [hideAbout, setHideAbout] = React.useState(false)
-  const [hideSkills, setHideSkills] = React.useState(false)
-  const [hidePorfo, setHidePorfo] = React.useState(false)
+  // const [hideAbout, setHideAbout] = React.useState(false)
+  // const [hideSkills, setHideSkills] = React.useState(false)
+  // const [hidePorfo, setHidePorfo] = React.useState(false)
 
   const Title = ({
     children,
@@ -31,8 +31,8 @@ const Home: NextPage = () => {
     onClickIcon,
   }: {
     children: React.ReactNode
-    hide: boolean
-    onClickIcon: () => void
+    hide?: boolean
+    onClickIcon?: () => void
   }) => {
     return (
       <Typography
@@ -49,25 +49,27 @@ const Home: NextPage = () => {
         }}
       >
         {children}
-        <Box
-          sx={{
-            flex: 1,
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}
-          px={2}
-        >
-          {hide ? (
-            <Box onClick={onClickIcon}>
-              <ExpandLessIcon />
-            </Box>
-          ) : (
-            <Box onClick={onClickIcon}>
-              <ExpandMoreIcon />
-            </Box>
-          )}
-        </Box>
+        {onClickIcon && (
+          <Box
+            sx={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'flex-end',
+              alignItems: 'center',
+            }}
+            px={2}
+          >
+            {hide ? (
+              <Box onClick={onClickIcon}>
+                <ExpandLessIcon />
+              </Box>
+            ) : (
+              <Box onClick={onClickIcon}>
+                <ExpandMoreIcon />
+              </Box>
+            )}
+          </Box>
+        )}
       </Typography>
     )
   }
@@ -176,7 +178,18 @@ const Home: NextPage = () => {
               </ul>
             </Typography>
           </Grid>
-          <Grid item md={8} xs={12}>
+          <Grid
+            item
+            md={8}
+            xs={12}
+            sx={[
+              matchM && {
+                display: 'flex',
+                alignItems: 'center',
+                paddingRight: 2,
+              },
+            ]}
+          >
             {icons?.map((icon) => (
               <Box key={icon} component={'span'} m={2}>
                 <Image
@@ -264,8 +277,8 @@ const Home: NextPage = () => {
           }}
         >
           <Title
-            hide={hideAbout}
-            onClickIcon={() => setHideAbout((prev) => !prev)}
+          // hide={hideAbout}
+          // onClickIcon={() => setHideAbout((prev) => !prev)}
           >
             About
           </Title>
@@ -273,14 +286,13 @@ const Home: NextPage = () => {
             sx={{
               fontSize: matchM ? '18px' : '16px',
               flexGrow: 1,
-              height: hideAbout ? 0 : 'auto',
+              // height: hideAbout ? 0 : 'auto',
               overflow: 'hidden',
             }}
           >
             <Typography component={'h5'} variant={'body2'} p={2}>
-              Welcome to My first personal website! I&apos;m building this web
-              as a showcase for my skill and knowledge as a Web developer. As a
-              developer, there are so many skills that need to pick up. <br />
+              Welcome to My first personal website! <br />
+              As a developer, there are so many skills that need to pick up.
               Therefore, I will also build a blog to tidy up my learnings. And
               of course, this website would be a great opportunity for practice.
             </Typography>
@@ -288,15 +300,15 @@ const Home: NextPage = () => {
           </Box>
 
           <Title
-            hide={hideSkills}
-            onClickIcon={() => setHideSkills((prev) => !prev)}
+          // hide={hideSkills}
+          // onClickIcon={() => setHideSkills((prev) => !prev)}
           >
             My Skills
           </Title>
           <Box
             sx={{
               flexGrow: 1,
-              height: hideSkills ? 0 : 'auto',
+              // height: hideSkills ? 0 : 'auto',
               overflow: 'hidden',
             }}
           >
@@ -309,23 +321,23 @@ const Home: NextPage = () => {
               />
             ))}
           </Box>
-          <Title
-            hide={hidePorfo}
-            onClickIcon={() => setHidePorfo((prev) => !prev)}
+          {/* <Title
+          // hide={hidePorfo}
+          // onClickIcon={() => setHidePorfo((prev) => !prev)}
           >
             My Porfolio
           </Title>
           <Box
             sx={{
               flexGrow: 1,
-              height: hidePorfo ? 0 : 'auto',
+              // height: hidePorfo ? 0 : 'auto',
               overflow: 'hidden',
             }}
           >
             <Typography component={'h5'} variant={'body2'} p={2}>
               Underdevelopment
             </Typography>
-          </Box>
+          </Box> */}
         </Box>
       </Container>
       <Box>

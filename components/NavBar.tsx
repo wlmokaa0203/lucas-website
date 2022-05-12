@@ -8,10 +8,15 @@ import {
   AppBar,
   useScrollTrigger,
   Box,
+  useMediaQuery,
 } from '@mui/material'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import { breakpoints } from '../utils/styles'
 
 export default function NavBar() {
+  const router = useRouter()
+  const matchM = useMediaQuery(breakpoints.mediaQuery.m)
+
   const pages = [
     {
       label: 'Home',
@@ -27,6 +32,18 @@ export default function NavBar() {
     <HideOnScroll>
       <AppBar>
         <Toolbar sx={{ justifyContent: 'center', position: 'relative' }}>
+          <Box
+            sx={{
+              justifyContent: 'center',
+              position: 'absolute',
+              color: 'text.secondary',
+              fontFamily: 'Square Peg',
+              fontSize: matchM ? 36 : 24,
+              left: 20,
+            }}
+          >
+            Lucas{router.pathname.includes('/blog') && "'s Blog"}
+          </Box>
           {pages.map((page) => (
             <NavLink key={page.slug} name={page.label} slug={page.slug} />
           ))}
@@ -50,6 +67,7 @@ export default function NavBar() {
 }
 
 function NavLink({ name, slug }: { name: string; slug: string }) {
+  const matchM = useMediaQuery(breakpoints.mediaQuery.m)
   const router = useRouter()
   const { pathname } = router
 
@@ -60,7 +78,7 @@ function NavLink({ name, slug }: { name: string; slug: string }) {
           sx={[
             {
               color: 'text.secondary',
-              width: 100,
+              width: matchM ? 100 : 60,
               display: 'flex',
               justifyContent: 'center',
             },
